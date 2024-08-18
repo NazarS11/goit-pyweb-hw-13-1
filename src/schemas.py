@@ -10,7 +10,7 @@ class ContactBase(BaseModel):
     phone: str
     birthday: date
     additional_info: Optional[str] = None
-
+ 
 class ContactCreate(ContactBase):
     pass
 
@@ -34,6 +34,8 @@ class UserDb(BaseModel):
     username: str
     email: str
     created_at: datetime
+    confirmed: bool
+    avatar_url: Optional[str] = None
 
     class Config:
         orm_mode = True
@@ -48,3 +50,6 @@ class TokenModel(BaseModel):
     access_token: str
     refresh_token: str
     token_type: str = "bearer"
+
+class RequestEmail(BaseModel):
+    email: EmailStr
